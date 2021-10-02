@@ -1,0 +1,41 @@
+<view class='indexContainer'>
+  <!-- 纵向排列，水平居中 -->
+  <!-- <image class='avatarUrl' src="/static/images/nvsheng.jpg"></image> -->
+  <!-- <image class='avatarUrl' src="{{userInfo.avatarUrl}}"></image> -->
+  <!-- <button open-type='getUserInfo'>获取用户信息</button> -->
+  <!-- 注意：这个接口现在不再弹窗了 -->
+  <!-- wx.getUserInfo接口的返回参数不变，但开发者获取的userInfo为匿名信息。 -->
+  <!-- 2021年4月28日24时后发布的小程序新版本，无法通过wx.getUserInfo与<button open-type="getUserInfo"/>获取用户个人信息
+    （头像、昵称、性别与地区），将直接获取匿名数据（包括userInfo与encryptedData中的用户个人信息），获取加密后的openID与unionID数据的能力不做调整。
+    此前发布的小程序版本不受影响，但如果要进行版本更新则需要进行适配。 -->
+  <!-- <button bindtap="handleGetUserInfo">获取用户信息</button> -->
+  <!-- button用于获取用户信息仅用于首次登陆，未授权的情况下，一旦授权了，它的历史使命就完成了，它就没什么用了 -->
+
+  <!-- img标签必须要闭合 -->
+  <!-- 使用相对路径比较麻烦，使用绝对路径比较好 -->
+  <!-- <text class='userName'>筛滤淘</text> -->
+  <!-- <text class='userName'>{{msg}}</text> -->
+  <!-- <text class='userName'>{{userInfo.nickName}}</text> -->
+  <!-- 我不想用静态数据了，我想用动态数据——使用双大括号表达式 -->
+  <!-- 这个数据不可能是一成不变的，后期可能会动态的修改数据。 -->
+  <block wx:if="{{!hasUserInfo}}">
+    <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+    <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+  </block>
+
+  <block wx:else>
+    <image class='avatarUrl' src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </block>
+  <!-- 测试事件绑定有关代码 -->
+  <!-- <view class='goStudy' bindtap="handleParent"> -->
+  <!-- <text bindtap="handleChild">Hello World</text> -->
+  <!-- bindtap是冒泡，会打印两次，先子级，后父级 -->
+  <!-- <text catchtap="handleChild">Hello World</text> -->
+  <!-- catchtap会阻止冒泡，只会打印子级一次 -->
+  <!-- </view> -->
+
+  <view class='goStudy' catchtap="toLogs">
+    <text>Hello World</text>
+  </view>
+</view>
