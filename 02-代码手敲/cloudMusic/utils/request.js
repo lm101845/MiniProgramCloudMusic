@@ -1,7 +1,7 @@
 /*
  * @Author: liming
  * @Date: 2021-11-30 06:08:53
- * @LastEditTime: 2021-11-30 06:25:01
+ * @LastEditTime: 2021-11-30 06:40:13
  * @FilePath: \cloudMusic\utils\request.js
  */
 
@@ -27,23 +27,38 @@
  *  
  */
 
-
+import config from './config'
+// import { host } from './config'
+// 这样写不行
 export default (url, data = {}, method = 'GET') => {
   //data的默认值为{}，表示没有形参
   //设置形参的默认值为GET
   //我们这个是异步任务，非阻塞任务，所以不能直接返回结果，而是返回一个promise对象
-  return new Promise(() => {
+  return new Promise((resolve, reject) => {
     // 我们返回一个Promise实例，而且在它的执行器里面，我们去执行这个异步任务
     //当我们new Promise，相当于初始化Promise实例的状态为pending
     wx.request({
-      url,
+      // url,
+      // url: 'http://localhost:3000' + url,
+      //这个是比较笨的方法,而且以后我们的服务器域名要改，还得到这里改，不太好
+      // 为了耦合度更低，我们可以把服务器域名放在config.js里面，这样就不会暴露在代码里面
+      url: config.host + url,
+      //如果是import config from './config'，就要写config.host,前面的config要加，这个我在实际项目里吃过亏
+      // url: host + url,
+      //我想简写发现不行，因为我们的host是一个变量，而且这个变量是在config.js里面定义的
       data,
       method,
       success: res => {
-        console.log('请求成功', res);
+        // console.log('请求成功', res);
+        resolve(res.data)
+        // 我们将res里的data过滤出来，返回给调用者
+        // resolve的作用，是修改Promise的状态为成功状态，resolved
       },
       fail: err => {
-        console.log('请求失败', err);
+        // console.log('请求失败', err);
+        reject(err);
+        //失败的话，我们调用reject,把err给送出去
+        //rejected的作用，是修改Promise的状态为失败状态，rejected
       }
     })
   })

@@ -1,12 +1,12 @@
 /*
  * @Author: liming
  * @Date: 2021-10-05 17:10:07
- * @LastEditTime: 2021-11-30 06:23:40
+ * @LastEditTime: 2021-11-30 06:33:48
  * @FilePath: \cloudMusic\pages\index\index.js
  */
 // pages/index/index.js
 
-import request from '../utils/request.js'
+import request from '../../utils/request.js'
 Page({
 
   /**
@@ -45,7 +45,9 @@ Page({
 
     //这里我们用自己封装的方式去发送请求
     // request('http://localhost:3000/banner', {type:2})
-    let result = await request('http://localhost:3000/banner', {type:2})
+    // let result = await request('http://localhost:3000/banner', { type: 2 })
+    let result = await request('/banner', { type: 2 })
+    // 因为每次接下来请求的都是固定的服务器，每次都是http://localhost:3000，我们每次都写这个太麻烦
   },
 
   /**
