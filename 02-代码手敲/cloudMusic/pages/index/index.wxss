@@ -66,6 +66,7 @@
 
 .recommendScroll{
   display: flex;
+  height: 300rpx;
 }
 .scrollItem{
   width: 200rpx;

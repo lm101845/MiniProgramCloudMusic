@@ -1,0 +1,13 @@
+<!-- 右键新建page和新建component的区别：
+  1.一个页面可以有多个component，一个component只能属于一个page
+  2.app.json里面只收录page的路径，而不会收录component的路径,它没有资格
+  3.页面里面的js是page调用，组件里面的js是component调用 -->
+<view class='header'>
+  <!-- <text class="title">推荐歌曲</text> -->
+  <text class="title">{{title}}</text>
+  <view>
+    <!-- <text>为你精心推荐</text> -->
+    <text>{{nav}}</text>
+    <text class='more'>查看更多</text>
+  </view>
+</view>

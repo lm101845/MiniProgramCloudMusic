@@ -1,7 +1,7 @@
 /*
  * @Author: liming
  * @Date: 2021-10-05 17:10:07
- * @LastEditTime: 2021-11-30 06:33:48
+ * @LastEditTime: 2021-12-01 06:12:02
  * @FilePath: \cloudMusic\pages\index\index.js
  */
 // pages/index/index.js
@@ -13,7 +13,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    //要将从接口拿到的数据显示到页面，需要你在这里初始化一下数据
+    //初始化轮播图数据 
+    bannerList: [],
+    //初始化推荐歌单数据
+    recommendList:[]
   },
 
   /**
@@ -46,8 +50,21 @@ Page({
     //这里我们用自己封装的方式去发送请求
     // request('http://localhost:3000/banner', {type:2})
     // let result = await request('http://localhost:3000/banner', { type: 2 })
-    let result = await request('/banner', { type: 2 })
+    let bannerListData = await request('/banner', { type: 2 })
     // 因为每次接下来请求的都是固定的服务器，每次都是http://localhost:3000，我们每次都写这个太麻烦
+    this.setData({
+      bannerList: bannerListData.banners
+    })
+
+
+    //获取推荐歌单数据
+    let recommendListData = await request('/personalized', { limit: 10 })
+    this.setData({
+      recommendList: recommendListData.result
+    })
+    // console.log(this);
+    // console.log(this.data);
+    // console.log(this.data.recommendList);
   },
 
   /**
