@@ -2,10 +2,10 @@
   <!-- 轮播图区域 -->
   <swiper class='banners' indicator-dots indicator-color='ivory' indicator-active-color='#d43c33'>
     <swiper-item wx:for="{{bannerList}}" wx:key="bannerId">
-      <!--wx:key后面不需要像Vue一样，通过对象.属性来写，而是直接写属性即可-->
+      <!-- wx:key后面不需要像Vue一样，通过对象.属性来写，而是直接写属性即可 -->
       <image src="{{item.pic}}"></image>
       <!-- 注意：开发工具没有路径的提示，需要我们手动去敲，以后老师教我们用IDE开发小程序 -->
-      <!--小程序里面循环遍历轮播图-->
+      <!-- 小程序里面循环遍历轮播图 -->
     </swiper-item>
   </swiper>
   <!-- 五个图标导航区域 -->
@@ -33,7 +33,7 @@
   </view>
   <!-- 推荐歌曲区域 -->
   <view class='recommendContainer'>
-  <!-- 头部区域 -->
+    <!-- 头部区域 -->
     <!-- <view class='header'>
       <text class="title">推荐歌曲</text>
       <view>
@@ -41,22 +41,21 @@
         <text class='more'>查看更多</text>
       </view>
     </view> -->
-  <!-- 使用封装好的组件 -->
-<NavHeader title="推荐歌曲" nav="为你静心推荐"></NavHeader>
+    <!-- 使用封装好的组件 -->
+    <NavHeader title="推荐歌曲" nav="为你静心推荐"></NavHeader>
     <!-- 内容区 -->
     <scroll-view class='recommendScroll' enable-flex scroll-x>
-    <!--  scroll-view比较轴，虽然你使用了Flex布局让它横向排列了，但是它比较轴，仍然以纵向去计算高度，所以出现很长的滚动条 -->
+      <!-- scroll-view比较轴，虽然你使用了Flex布局让它横向排列了，但是它比较轴，仍然以纵向去计算高度，所以出现很长的滚动条 -->
       <view class="scrollItem" wx:for="{{recommendList}}" wx:key="id">
         <image src="{{item.picUrl}}"></image>
         <!-- 注意：src前面的/不能丢！！！ -->
         <!-- 如果是双重for循环的话，每个都用item，容易混，你也可以自己设置要循环的变量名下标名 -->
-        <!--  使用 wx:for-item 可以指定数组当前元素的变量名，
+        <!-- 使用 wx:for-item 可以指定数组当前元素的变量名，
         使用 wx:for-index 可以指定数组当前下标的变量名： -->
         <text>{{item.name}}</text>
       </view>
     </scroll-view>
   </view>
-
   <!-- 排行榜区域 -->
   <!-- 我们发现推荐区域的头部和排行榜的头部格式是一样的，我们可以把它抽离成自定义组件 -->
   <!-- 小程序现在已经支持自定义组件了 -->
@@ -65,5 +64,18 @@
     <!-- 头部区域 -->
     <NavHeader title="排行榜" nav="热歌风向标"></NavHeader>
     <!-- 内容区域 -->
+    <swiper class="topListSwiper"  circular  	next-margin="50rpx">
+      <!-- swiper有一个默认样式，导致高度不够，下面看不见 -->
+      <swiper-item wx:for="{{topList}}" wx:key="name">
+        <view class="swiperItem">
+          <view class="title">{{item.name}}</view>
+          <view class="musicItem" wx:for="{{item.tracks}}" wx:for-item="musicItem" wx:key="name">
+            <image src="{{musicItem.al.picUrl}}" />
+            <text class="count">{{index + 1}}</text>
+            <text class="musicName">{{musicItem.name}}</text>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
   </view>
 </view>

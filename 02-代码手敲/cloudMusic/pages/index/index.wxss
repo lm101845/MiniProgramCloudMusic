@@ -97,3 +97,51 @@
   /* 设置对齐模式 */
   -webkit-line-clamp: 2;
 }
+
+/* 排行榜 */
+.topList{
+  padding: 20rpx;
+}
+
+.topListSwiper{
+  height: 400rpx;
+}
+
+.swiperItem{
+  width: 96%;
+  background-color: #FBFBFB;
+}
+.swiperItem .title{
+  font-size: 32rpx;
+  line-height: 80rpx;
+  color:#666;
+}
+
+.musicItem{
+  display: flex;
+  /* 当一个元素设置为flex，其子元素会自动称为block元素 */
+  /* 因为是flex布局，即使是块级元素，也会默认在一行，水平排列 */
+  margin-bottom: 20rpx;
+}
+
+.musicItem image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 6rpx;
+} 
+
+.musicItem .count{
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.musicItem .musicName{
+  height: 100rpx;
+  line-height: 100rpx;
+  max-width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

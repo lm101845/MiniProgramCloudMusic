@@ -1,7 +1,7 @@
 /*
  * @Author: liming
  * @Date: 2021-10-05 17:10:07
- * @LastEditTime: 2021-12-01 06:12:02
+ * @LastEditTime: 2021-12-15 22:33:25
  * @FilePath: \cloudMusic\pages\index\index.js
  */
 // pages/index/index.js
@@ -17,7 +17,9 @@ Page({
     //初始化轮播图数据 
     bannerList: [],
     //初始化推荐歌单数据
-    recommendList:[]
+    recommendList: [],
+    //初始化排行榜数据
+    topList: [], 
   },
 
   /**
@@ -65,7 +67,44 @@ Page({
     // console.log(this);
     // console.log(this.data);
     // console.log(this.data.recommendList);
+
+    // 获取排行榜数据
+    /**
+     * 需求分析：
+     * 1.需要根据idx的值获取对应的数据
+     * 2.idx的取值范围是0-20，而我们只需要0-4
+     * 3.所以我们需要发送5次请求
+     * 前++和后++的区别：
+     *  1.先看到运算符还是值
+     *  2.如果先看到的是运算符，就先运算再赋值
+     *  3.如果先看到的是值，就先赋值再运算
+     */
+    let index = 0;
+    let resultArr = [];
+    while (index < 5) { 
+      index++;
+      let topListData = await request('/top/list', { idx: index++ });
+        // index++ 先看到的是值，所以第一把index进来，它的值就是0
+      let topListItem = { name: topListData.playlist.name, tracks: topListData.playlist.tracks.slice(0, 3) };
+      // splice(会修改原数组，可以对指定的数组进行增删改) slice(不会修改原数组，我们用slice)
+      resultArr.push(topListItem);
+
+      // 为解决白屏问题，我们把更新数据的代码放到这里
+      // 这样不需要等待五次请求全部结束才更新，用户体验较好，但是渲染次数会多一些。
+      this.setData({
+        topList: resultArr
+      })
+    }
+
+    // 我们在while循环里面发了5次请求，只有5次请求全部结束我们最后才更新了数组，这样会有白屏的问题
+
+    //在循环体外面更新topList的状态值
+    // 放在此处更新,会导致发送请求的过程中,页面长时间白屏,用户体验变差。
+    // this.setData({
+    //   topList: resultArr
+    // })
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
