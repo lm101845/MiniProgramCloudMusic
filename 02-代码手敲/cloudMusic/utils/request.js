@@ -1,7 +1,7 @@
 /*
  * @Author: liming
  * @Date: 2021-11-30 06:08:53
- * @LastEditTime: 2021-11-30 06:40:13
+ * @LastEditTime: 2021-12-22 00:14:08
  * @FilePath: \cloudMusic\utils\request.js
  */
 
@@ -43,6 +43,7 @@ export default (url, data = {}, method = 'GET') => {
       //这个是比较笨的方法,而且以后我们的服务器域名要改，还得到这里改，不太好
       // 为了耦合度更低，我们可以把服务器域名放在config.js里面，这样就不会暴露在代码里面
       url: config.host + url,
+      // url: config.mobileHost + url,
       //如果是import config from './config'，就要写config.host,前面的config要加，这个我在实际项目里吃过亏
       // url: host + url,
       //我想简写发现不行，因为我们的host是一个变量，而且这个变量是在config.js里面定义的
