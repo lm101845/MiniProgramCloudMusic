@@ -1,7 +1,7 @@
 /*
  * @Author: liming
  * @Date: 2021-12-26 12:04:20
- * @LastEditTime: 2021-12-26 14:54:14
+ * @LastEditTime: 2021-12-27 05:50:33
  * @FilePath: \cloudMusic\pages\login\login.js
  */
 
@@ -111,11 +111,16 @@ Page({
             wx.showToast({
                     title: '登陆成功'
                 })
-                //登陆成功后，跳转到个人中心之前，我们需要做一件事情
+                //登陆成功后，跳转到个人中心之前，我们需要做一件事情——将用户的信息存储至本地
+            wx.setStorageSync('userInfo', JSON.stringify(result.profile));
+            // 我们给它存成JSON格式
+            //setStorageSync这个是同步存储
+            //这个本地的数据，只要你不清空，它就一直在，也就是说任何页面它都可以访问
 
             //登陆成功后我们还要跳转到个人中心页
             // wx.navigateTo({
-            wx.switchTab({
+            // wx.switchTab({
+            wx.reLaunch({
                 //报错：errMsg: "navigateTo:fail can not navigateTo a tabbar page"，不能用navigateTo跳转tabBar
                 url: '/pages/personal/personal',
             });

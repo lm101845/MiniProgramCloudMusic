@@ -220,6 +220,7 @@
 .recentScroll {
     display: flex;
     height: 200rpx;
+    /* 一个坑：必须要给它设置一个固定高度 */
 }
 
 .recentItem {
