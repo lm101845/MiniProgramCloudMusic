@@ -1,7 +1,7 @@
 /* 全局引入图标样式 */
-@import "/static/iconfont/iconfont.wxss";
 
-page{
-  height: 100%;
-  /* 将默认标签的高度设置为100% */
+@import "/static/iconfont/iconfont.wxss";
+page {
+    height: 100%;
+    /* 将默认标签的高度设置为100% */
 }

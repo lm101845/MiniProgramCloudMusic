@@ -1,6 +1,7 @@
 {
     "pages": [
         "pages/personal/personal",
+        "pages/login/login",
         "pages/index/index",
         "pages/video/video"
     ],
@@ -15,8 +16,7 @@
         "color": "#333",
         "selectedColor": "#d43c33",
         "backgroundColor": "#fff",
-        "list": [
-            {
+        "list": [{
                 "pagePath": "pages/index/index",
                 "text": "主页",
                 "iconPath": "/static/images/tabs/tab-home.png",

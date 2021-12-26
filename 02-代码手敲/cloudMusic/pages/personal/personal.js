@@ -1,7 +1,7 @@
 /*
  * @Author: liming
  * @Date: 2021-12-21 23:34:47
- * @LastEditTime: 2021-12-22 01:15:18
+ * @LastEditTime: 2021-12-26 14:40:11
  * @FilePath: \cloudMusic\pages\personal\personal.js
  */
 // pages/personal/personal.js
@@ -56,6 +56,13 @@ Page({
         this.setData({
             coverTransform: `translateY(0rpx)`,
             coverTransition: "transform 0.3s"
+        })
+    },
+
+    //跳转至登陆Login页面的回调
+    toLogin() {
+        wx.navigateTo({
+            url: '/pages/login/login',
         })
     },
     /**
