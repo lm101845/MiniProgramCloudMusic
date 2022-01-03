@@ -1,7 +1,7 @@
 <!--
  * @Author: liming
  * @Date: 2021-12-21 23:34:55
- * @LastEditTime: 2021-12-27 06:54:28
+ * @LastEditTime: 2022-01-04 05:57:46
  * @FilePath: \cloudMusic\pages\video\video.wxml
 -->
 <view class="videoContainer">
@@ -18,45 +18,9 @@
 
     <!-- 导航区域 -->
     <scroll-view class="" scroll-x class="navScroll" enable-flex>
-        <view class="navItem">
+        <view class="navItem" wx:for="{{videoGroupList}}" wx:key="id">
             <!-- 下边框正好和文字长度一致 -->
-            <view class="navContent active">推荐</view>
-        </view>
-        <view class="navItem">
-            <!-- 下边框正好和文字长度一致 -->
-            <view class="navContent active">万有引力</view>
-        </view>
-        <view class="navItem">
-            <!-- 下边框正好和文字长度一致 -->
-            <view class="navContent">万有引力</view>
-        </view>
-        <view class="navItem">
-            <!-- 下边框正好和文字长度一致 -->
-            <view class="navContent">万有引力</view>
-        </view>
-        <view class="navItem">
-            <!-- 下边框正好和文字长度一致 -->
-            <view class="navContent">万有引力</view>
-        </view>
-        <view class="navItem">
-            <!-- 下边框正好和文字长度一致 -->
-            <view class="navContent">万有引力</view>
-        </view>
-        <view class="navItem">
-            <!-- 下边框正好和文字长度一致 -->
-            <view class="navContent">万有引力</view>
-        </view>
-        <view class="navItem">
-            <!-- 下边框正好和文字长度一致 -->
-            <view class="navContent">万有引力</view>
-        </view>
-        <view class="navItem">
-            <!-- 下边框正好和文字长度一致 -->
-            <view class="navContent">万有引力</view>
-        </view>
-        <view class="navItem">
-            <!-- 下边框正好和文字长度一致 -->
-            <view class="navContent">万有引力</view>
+            <view class="navContent {{navId === item.id ? 'active':''}}" bindtap="changeNav" id="{{item.id}}" data-id="{{item.id}}">{{item.name}}</view>
         </view>
     </scroll-view>
 </view>

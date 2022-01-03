@@ -1,7 +1,7 @@
 /*
  * @Author: liming
  * @Date: 2021-12-26 12:04:20
- * @LastEditTime: 2021-12-27 05:50:33
+ * @LastEditTime: 2022-01-04 06:47:26
  * @FilePath: \cloudMusic\pages\login\login.js
  */
 
@@ -17,7 +17,7 @@
 //   3) 用户存在需要验证密码是否正确
 //   4) 密码不正确返回给前端提示密码不正确
 //   5) 密码正确返回给前端数据，提示用户登陆成功(会携带用户的相关信息)
-
+// console.log(wx.getStorageSync('xxx'), '123');
 import request from '../../utils/request.js';
 Page({
 
@@ -104,14 +104,16 @@ Page({
         }
 
         //前端验证通过，开始后端验证，这里开始调用后端接口
-        let result = await request('/login/cellphone', { phone, password })
+        let result = await request('/login/cellphone', { phone, password, isLogin: true })
             // params单独写，同名属性可以省略不写
             // 建议先写成功的，后写失败的，因为失败的情况太多
+            //新增isLogin: true参数，用户判断登陆
         if (result.code === 200) {
             wx.showToast({
-                    title: '登陆成功'
-                })
-                //登陆成功后，跳转到个人中心之前，我们需要做一件事情——将用户的信息存储至本地
+                e: '登陆成功'
+            })
+            console.log(result, '===============');
+            //成功后，跳转到个人中心之前，我们需要做一件事情——将用户的信息存储至本地
             wx.setStorageSync('userInfo', JSON.stringify(result.profile));
             // 我们给它存成JSON格式
             //setStorageSync这个是同步存储
