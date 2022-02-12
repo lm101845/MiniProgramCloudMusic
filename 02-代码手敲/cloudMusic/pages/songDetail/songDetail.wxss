@@ -1,0 +1,131 @@
+.songDetailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 侧轴(这里是x轴)的对齐方式是水平居中 */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* 底座 */
+
+.circle {
+    position: relative;
+    z-index: 100;
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 10rpx 0;
+}
+
+
+/* 摇杆 */
+
+.needle {
+    position: relative;
+    z-index: 99;
+    top: -40rpx;
+    left: 60rpx;
+    width: 192rpx;
+    height: 274rpx;
+    /* border: 1px solid red; */
+    transform: rotate(-20deg);
+    /* 摇杆的默认旋转中心点是中间的那个点，也就是50%，50% */
+    transform-origin: 40rpx 0;
+    /* x轴往右偏移，y轴不需要动 */
+    /* transition: transform 1s; */
+    transition-duration: 0.5s;
+    /* transition是过渡的意思 */
+}
+
+.needleRotate {
+    transform: rotate(0deg);
+}
+
+
+/* 磁盘 */
+
+.discContainer {
+    position: relative;
+    top: -170rpx;
+    width: 598rpx;
+    height: 598rpx;
+    /* border: 1rpx solid red; */
+}
+
+
+/* 磁盘的动画 */
+
+
+/* 注意：我们的磁盘动作应该是摇杆落到磁盘上面之后才开始转的 */
+
+
+/* 即磁盘动画要等摇杆动画结束之后才开始，摇杆动画要1秒钟结束，即我们当前动画要延迟一秒后才开始 */
+
+.discAnimation {
+    animation: disc 4s linear infinite;
+    /* disc表示动画名称，2s表示动画持续时间，linear表示平滑过渡 infinite表示无限循环*/
+    animation-delay: 1s;
+}
+
+.disc {
+    width: 598rpx;
+    height: 598rpx;
+}
+
+@keyframes disc {
+    /* 一个完整的动画，其实是由一帧一帧的静态帧拼接而成的，只不过切换和衔接速度比较快，就成了动画 */
+    /* @keyframes：设置动画帧
+    *  1) from to
+          -只有2帧，适用于简单的动画，只有一个起始帧和一个结束帧
+    *  2) 百分比
+    *      -多用于复杂的动画，动画不止2帧，而且还有一个中间的帧
+     */
+    from {
+        /* 起始帧可以不写，要想写也行，写成0度即可 */
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.musicImg {
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 370rpx;
+    height: 370rpx;
+}
+
+
+/* 底部控制区域 */
+
+.musicContral {
+    position: absolute;
+    display: flex;
+    left: 0;
+    border-top: 1rpx solid #fff;
+    bottom: 40rpx;
+    width: 100%;
+}
+
+.musicContral text{
+    width: 20%;
+    height: 120rpx;
+    line-height: 120rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 50rpx;
+}
+
+.musicContral  .big{
+    font-size: 80rpx;
+}

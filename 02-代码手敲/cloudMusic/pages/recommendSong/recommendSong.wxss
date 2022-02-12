@@ -1,0 +1,95 @@
+.recommendSongContainer .header {
+    position: relative;
+    width: 100%;
+    height: 300rpx;
+}
+
+.recommendSongContainer .header image {
+    width: 100%;
+    height: 100%;
+}
+
+.recommendSongContainer .header .date {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150rpx;
+    margin-top: -50rpx;
+    width: 300rpx;
+    height: 100rpx;
+    /* border: 1px solid red; */
+    text-align: center;
+    line-height: 100rpx;
+    color: #fff;
+}
+
+.header .date .day {
+    font-size: 38rpx;
+}
+
+
+/* 列表区域 */
+
+.listContainer {
+    position: relative;
+    top: -20rpx;
+    padding: 0 20rpx;
+    border-radius: 30rpx;
+    background-color: #fff;
+}
+
+.listHeader {
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.listHeader .changeMore {
+    float: right;
+}
+
+
+/* 内容区 */
+.listScroll {
+    height: calc(100vh - 380rpx);
+}
+.scrollItem {
+    position: relative;
+    display: flex;
+    margin-bottom: 20rpx;
+}
+
+.scrollItem image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 8rpx;
+}
+
+.musicInfo {
+    display: flex;
+    /* 给它的父元素设置display:flex就行了 */
+    /* 当父亲为flex，它下面的子元素会自动成为block */
+    flex-direction: column;
+    margin-left: 20rpx;
+}
+
+.musicInfo text {
+    /* 注意：text是内联元素，直接设置高度是不生效的 */
+    height: 40rpx;
+    line-height: 40rpx;
+    max-width: 400rpx;
+    white-space: nowrap;
+    /* 不允许换行 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* ellipsis是省略号的意思 */
+}
+
+.scrollItem .iconfont {
+    position: absolute;
+    right: 0;
+    width: 80rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    /* background-color: red; */
+    text-align: right;
+}
