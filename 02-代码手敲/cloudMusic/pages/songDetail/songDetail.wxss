@@ -66,9 +66,10 @@
 /* 即磁盘动画要等摇杆动画结束之后才开始，摇杆动画要1秒钟结束，即我们当前动画要延迟一秒后才开始 */
 
 .discAnimation {
-    animation: disc 4s linear infinite;
-    /* disc表示动画名称，2s表示动画持续时间，linear表示平滑过渡 infinite表示无限循环*/
+    animation: disc 15s linear infinite;
+    /* disc表示动画名称，15s表示动画持续时间，linear表示平滑过渡 infinite表示无限循环*/
     animation-delay: 1s;
+    /* 延迟1秒才执行动画 */
 }
 
 .disc {
@@ -117,7 +118,7 @@
     width: 100%;
 }
 
-.musicContral text{
+.musicContral text {
     width: 20%;
     height: 120rpx;
     line-height: 120rpx;
@@ -126,6 +127,48 @@
     font-size: 50rpx;
 }
 
-.musicContral  .big{
+.musicContral .big {
     font-size: 80rpx;
+}
+
+
+/* 进度条控制区域 */
+
+.progressControl {
+    display: flex;
+    position: absolute;
+    bottom: 200rpx;
+    width: 640rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    /* border: 1px solid red; */
+}
+
+.barControl{
+    position: relative;
+    width: 450rpx;
+    height: 4rpx;
+    background-color: rgba(0,0,0,0.4);
+    margin: auto;
+}
+
+.audio-currentTime-Bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:1;
+    /* width: 100rpx; */
+    height: 4rpx;
+    background-color: red;
+}
+
+/* 小圆球 */
+.audio-circle{
+    position: absolute;
+    right: -12rpx;
+    top: -4rpx;
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 50%;
+    background-color: #fff;
 }
