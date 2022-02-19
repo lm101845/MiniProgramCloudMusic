@@ -47,6 +47,7 @@ Page({
         PubSub.subscribe('switchType', (msg, type) => {
             console.log(msg, type);
             let { recommendList, index } = this.data;
+            if(!this.data.recommendList.length) return
             if (type === 'pre') { //上一首
                 (index === 0 ) && (index = recommendList.length);
                     index -= 1

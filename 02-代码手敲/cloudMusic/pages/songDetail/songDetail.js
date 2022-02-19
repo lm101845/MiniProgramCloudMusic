@@ -83,6 +83,20 @@ Page({
                 // appInstance.globalData.isMusicPlay = false;
         })
 
+        //监听音乐播放自然结束
+        //TODO:不行啊，结束后没有自动播放下一首
+        this.backgroundAudioManager.onEnded(() => {
+            //自动切换下一首音乐，并且自动播放
+            PubSub.publish('switchType', 'next');
+
+            //将实时进度条的长度还原成0
+            this.setData({
+                currentWidth: 0,
+                currentTime: "0.00"
+                //这样更加保险
+            })
+        })
+
         //监听音乐播放进度
         this.backgroundAudioManager.onTimeUpdate(() => {
             // console.log('总时长', this.backgroundAudioManager.duration);
