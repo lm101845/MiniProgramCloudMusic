@@ -1,6 +1,7 @@
 import PubSub from 'pubsub-js'; //我们是发布方
 import moment from 'moment';
-import request from '../../utils/request.js';
+// import request from '../../utils/request.js';
+import request from '../../../utils/request.js';
 //获取全局实例
 const appInstance = getApp();
 

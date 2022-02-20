@@ -1,6 +1,7 @@
 import PubSub, { publish } from 'pubsub-js'; //我们是订阅方
 
-import request from '../../utils/request.js';
+import request from '../../../utils/request.js';
+// import request from '../../utils/request.js';
 
 
 Page({
@@ -88,7 +89,8 @@ Page({
             //因为小程序中对路由传参有字数限制，所以不能直接将song对象给传过去 
             // url: '/pages/songDetail/songDetail?song=' + JSON.stringify(song),
             //JS对象--》JSON字符串
-            url: '/pages/songDetail/songDetail?musicId=' + song.id,
+            // url: '/pages/songDetail/songDetail?musicId=' + song.id,
+            url: '/songPackage/pages/songDetail/songDetail?musicId=' + song.id,
         })
     },
     /**

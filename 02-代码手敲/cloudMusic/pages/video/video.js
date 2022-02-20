@@ -78,6 +78,7 @@ Page({
         wx.hideLoading();
         // console.log(videoListData, '======111=========');
         let index = 0;
+        if (!videoListData.datas) return 
         let videoList = videoListData.datas.map(item => {
             item.id = index++;
             return item;
@@ -1739,6 +1740,13 @@ Page({
         videoList.push(...newVideoList)
         this.setData({
             videoList
+        })
+    },
+
+    //跳转搜索界面
+    toSearch() {
+        wx.navigateTo({
+            url:'/pages/search/search'
         })
     },
     /**

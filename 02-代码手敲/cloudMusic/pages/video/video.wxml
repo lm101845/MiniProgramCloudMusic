@@ -8,10 +8,10 @@
     <!-- 头部区域 -->
     <view class="header">
         <image src="/static/images/video/video.jpg"></image>
-        <view class="search">
+        <view class="search" bindtap="toSearch">
             <!-- 中间这里是假的搜索框 -->
             <!-- 左右两边图片宽度固定，中间文字根据机型不同自适应 -->
-            搜索商品
+            搜索音乐
         </view>
         <image src="/static/images/logo.png"></image>
     </view>
